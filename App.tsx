@@ -1,4 +1,5 @@
 import React from 'react';
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 import { StatusBar } from 'expo-status-bar';
 import AppLoading from 'expo-app-loading';
 import * as SplashScreen from 'expo-splash-screen';
@@ -24,11 +25,13 @@ export default function App() {
   SplashScreen.hideAsync();
 
   return (
-    <AuthProvider>
-      <ThemeProvider theme={theme}>
-        <StatusBar style="light" backgroundColor="transparent" translucent />
-        <Routes />
-      </ThemeProvider>
-    </AuthProvider>
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <AuthProvider>
+        <ThemeProvider theme={theme}>
+          <StatusBar style="light" backgroundColor="transparent" translucent />
+          <Routes />
+        </ThemeProvider>
+      </AuthProvider>
+    </GestureHandlerRootView>
   );
 }

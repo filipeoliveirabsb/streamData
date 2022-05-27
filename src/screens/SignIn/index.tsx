@@ -2,6 +2,7 @@ import React from 'react';
 import { useTheme } from 'styled-components';
 import Fontisto from 'react-native-vector-icons/Fontisto'
 import { ActivityIndicator, Alert, Modal, View } from 'react-native';
+import { RectButtonProps } from 'react-native-gesture-handler';
 
 import { useAuth } from '../../hooks/useAuth';
 
@@ -26,10 +27,11 @@ export function SignIn() {
   const theme = useTheme();
 
   const signInButtonProps = {
-     onPress: handleSignIn 
-  }
+     onPress: {handleSignIn}
+  };
 
   async function handleSignIn(){
+    console.log('handleSignIn');
     try {
       await signIn();
     } catch (error) {
@@ -69,7 +71,7 @@ export function SignIn() {
             o mundo da Twitch
           </Description>
 
-          <SignInButton {...signInButtonProps}>
+          <SignInButton onPress={handleSignIn}>
             <SignInButtonIcon>
               {isLoggingIn ? (
                 <ActivityIndicator 
@@ -88,7 +90,7 @@ export function SignIn() {
               )}
             </SignInButtonIcon>
             <SignInButtonText>
-              {!isLoggingIn ? 'Entrando...' : 'Entrar com Twitch'}
+              {isLoggingIn ? 'Entrando...' : 'Entrar com Twitch'}
             </SignInButtonText>
           </SignInButton> 
         </LoginInfo>
