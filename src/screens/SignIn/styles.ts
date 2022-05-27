@@ -1,5 +1,5 @@
-import { RectButton } from 'react-native-gesture-handler';
 import styled from 'styled-components/native';
+import { RectButton } from 'react-native-gesture-handler';
 import { getBottomSpace, getStatusBarHeight } from 'react-native-iphone-x-helper';
 import { MotiView } from 'moti';
 
