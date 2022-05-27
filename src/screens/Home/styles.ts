@@ -5,7 +5,7 @@ import styled from 'styled-components/native';
 
 export const Container = styled(MotiView)`
   flex: 1;
-  background-color: ${props => props.theme.colors.black};
+  background-color: ${({ theme }) => theme.colors.black};
 `;
 
 export const Header = styled.View`

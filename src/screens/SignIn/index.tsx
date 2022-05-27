@@ -25,6 +25,10 @@ export function SignIn() {
   const { signIn, isLoggingIn } = useAuth();
   const theme = useTheme();
 
+  const signInButtonProps = {
+     onPress: handleSignIn 
+  }
+
   async function handleSignIn(){
     try {
       await signIn();
@@ -65,7 +69,7 @@ export function SignIn() {
             o mundo da Twitch
           </Description>
 
-          <SignInButton onPress={handleSignIn}>
+          <SignInButton {...signInButtonProps}>
             <SignInButtonIcon>
               {isLoggingIn ? (
                 <ActivityIndicator 
@@ -83,9 +87,8 @@ export function SignIn() {
                 />
               )}
             </SignInButtonIcon>
-              {!isLoggingIn ? 'Entrando...' : 'Entrar com Twitch'}
             <SignInButtonText>
-              
+              {!isLoggingIn ? 'Entrando...' : 'Entrar com Twitch'}
             </SignInButtonText>
           </SignInButton> 
         </LoginInfo>

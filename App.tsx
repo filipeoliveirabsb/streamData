@@ -1,6 +1,7 @@
 import React from 'react';
 import { StatusBar } from 'expo-status-bar';
 import AppLoading from 'expo-app-loading';
+import * as SplashScreen from 'expo-splash-screen';
 import { useFonts } from 'expo-font';
 import { DMSans_400Regular, DMSans_700Bold } from '@expo-google-fonts/dm-sans';
 
@@ -11,14 +12,16 @@ import { ThemeProvider } from 'styled-components/native';
 import theme from './src/styles/theme';
 
 export default function App() {
+  SplashScreen.preventAutoHideAsync();
   const [isLoaded] = useFonts({
     DMSans_400Regular,
     DMSans_700Bold
   })
   
   if (!isLoaded) {
-    return <AppLoading />
+    return null;
   }
+  SplashScreen.hideAsync();
 
   return (
     <AuthProvider>
